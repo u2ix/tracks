@@ -26,5 +26,8 @@ def summary(context, undone_todo_count)
   content_tag(:p, "#{undone_todo_count}. Context is #{context.hidden? ? 'Hidden' : 'Active'}.")
 end
 
+def contexts_for_autocomplete
+  current_user.contexts.collect {|c| c.name}.to_json
+end
 
 end

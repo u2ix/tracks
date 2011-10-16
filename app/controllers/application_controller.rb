@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper :application
+  helper :application, :contexts
   include LoginSystem
   helper_method :current_user, :prefs, :format_date, :markdown
 

@@ -626,10 +626,8 @@ var TodoItems = {
 var ContextItems = {
     setup_autocomplete_for_contexts: function(id) {
         $(id).autocomplete({
-            source: relative_to_root('contexts.autocomplete'),
-            autoFocus: true,
-            minLength: 1,
-            delay: 400 /* increase a bit. default was 300 */
+          autoFocus: true, 
+          source: defaultContexts
         });
     }
 }

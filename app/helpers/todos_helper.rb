@@ -265,11 +265,6 @@ module TodosHelper
     return default_container_empty || deferred_container_empty
   end
 
-  def default_contexts_for_autocomplete
-    projects = current_user.uncompleted.projects.find(:all, :include => [:context], :conditions => ['default_context_id is not null'])
-    Hash[*projects.map{ |p| [escape_javascript(p.name), escape_javascript(p.default_context.name)] }.flatten].to_json
-  end
-
   def default_tags_for_autocomplete
     projects = current_user.projects.uncompleted.find(:all, :conditions => ["default_tags != ''"])
     Hash[*projects.map{ |p| [escape_javascript(p.name), p.default_tags] }.flatten].to_json
