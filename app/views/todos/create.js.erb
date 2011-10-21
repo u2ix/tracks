@@ -4,6 +4,7 @@
   TracksPages.set_page_badge(<%= @down_count %>);
   <% if should_show_new_item -%>
     <% if should_add_new_context -%>
+      defaultContexts.push("<%= escape_javascript @todo.context.name %>")
       insert_new_context_with_new_todo();
     <% else -%>
       add_todo_to_existing_context();

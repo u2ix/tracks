@@ -425,13 +425,11 @@ var TodoItems = {
         var givenContextName = $('#'+source+'todo_context_name').val();
         if (givenContextName.length == 0) return true; // do nothing and depend on rails validation error
 
-        var contexts = TodoItems.getContextsForAutocomplete(givenContextName, element_to_block);
-
-        if (contexts) {
-            for (var i=0; i<contexts.length; i++)
-                if (contexts[i].value == givenContextName) return true;
-        }
-        return confirm(i18n['contexts.new_context_pre'] + givenContextName + i18n['contexts.new_context_post']);
+		if($.inArray(givenContextName, defaultContexts) == -1) {
+			return confirm(i18n['contexts.new_context_pre'] + givenContextName + i18n['contexts.new_context_post'])			
+		}
+		
+        return true;
     },
     generate_predecessor: function(todo_id, todo_spec) {
         var img = "<img id=\"delete_dep_"+todo_id+"\" class=\"icon_delete_dep\" src=\""+ relative_to_root('images/blank.png') + "\">";
